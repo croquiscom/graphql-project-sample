@@ -5,6 +5,7 @@ import { Config } from '../config';
 const app = createApp({
   project_root: Config.project_root,
   routers: {},
+  log4js_config: Config.log4js_config,
 });
 const server = http.createServer(app);
 
