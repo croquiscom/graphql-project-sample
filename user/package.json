@@ -1,0 +1,7 @@
+{
+  "name": "user",
+  "devDependencies": {
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.2"
+  }
+}
