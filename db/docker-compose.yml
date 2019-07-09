@@ -1,0 +1,20 @@
+version: '3'
+
+networks:
+  network:
+
+services:
+  mysql:
+    image: mysql:5.7
+    command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    container_name: sample-mysql
+    networks:
+      - network
+    ports:
+      - 6300:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=sample
+    volumes:
+      - ./data/mysql:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+      - ./mysql/tools:/tools
