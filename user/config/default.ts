@@ -9,6 +9,7 @@ const Config = {
     appenders: {
       console: { type: 'console' },
       basic_console: { type: 'console', layout: { type: 'basic' } },
+      file: { type: 'file', filename: path.resolve(__dirname, '../_server_test_logs.txt') },
     },
     categories: {
       default: {

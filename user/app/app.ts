@@ -3,7 +3,7 @@ import http from 'http';
 import { Config } from '../config';
 import { apollo_server } from './graphql';
 
-const app = createApp({
+export const app = createApp({
   project_root: Config.project_root,
   routers: {},
   log4js_config: Config.log4js_config,
