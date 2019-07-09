@@ -9,6 +9,9 @@ export class UserListResolver {
   async item_list(@Root('__args') args: UserListQueryArgs, @Info() info: GraphQLResolveInfo) {
     const columns = User.buildSelectColumns(info);
     const query = User.query();
+    if (args.full_name_istartswith) {
+      query.where({ full_name: { $startswith: args.full_name_istartswith } });
+    }
     query.limit(Math.min(args.limit_count || 10, 50));
     if (args.skip_count) {
       query.skip(args.skip_count);

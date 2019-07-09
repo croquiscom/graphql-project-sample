@@ -8,6 +8,9 @@ export class UserQueryArgs {
 
 @ArgsType()
 export class UserListQueryArgs {
+  @Field(() => String, { nullable: true, description: 'full_name starts with (case insensitive)' })
+  full_name_istartswith?: number;
+
   @Field(() => Int, { nullable: true, description: 'limit list count (default: 10, max: 50)' })
   limit_count?: number;
 

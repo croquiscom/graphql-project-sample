@@ -25,6 +25,9 @@ type Query {
   If there is no condition, returns all.
   """
   user_list(
+    """full_name starts with (case insensitive)"""
+    full_name_istartswith: String
+
     """limit list count (default: 10, max: 50)"""
     limit_count: Int
 
