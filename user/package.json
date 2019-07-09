@@ -3,8 +3,11 @@
   "dependencies": {
     "@croquiscom/crary-express": "^0.1.3",
     "apollo-server-express": "^2.6.7",
+    "cormo": "^0.12.1",
+    "deasync": "^0.1.15",
     "graphql": "^14.4.2",
-    "graphql-extensions": "^0.7.6"
+    "graphql-extensions": "^0.7.6",
+    "mysql": "^2.17.1"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.2",

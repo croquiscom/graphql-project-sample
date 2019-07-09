@@ -17,4 +17,16 @@ export const Config = {
     },
     disableClustering: true,
   },
+
+  database_user: {
+    host: 'localhost',
+    port: 6300,
+    database: 'user',
+    user: 'dbuser',
+    charset: 'utf8mb4',
+    collation: 'utf8mb4_unicode_ci',
+    pool_size: 3,
+    is_default: false,
+    query_timeout: 10000,
+  },
 };

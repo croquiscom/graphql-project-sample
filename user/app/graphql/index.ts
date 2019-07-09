@@ -2,6 +2,7 @@ import { Request } from '@croquiscom/crary-express';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema, DocumentNode, ExecutionArgs, Kind } from 'graphql';
 import { GraphQLExtension, GraphQLResponse } from 'graphql-extensions';
+import '../models';
 
 const schema = buildSchema(`
 type Query {
