@@ -2,6 +2,7 @@
   "name": "user",
   "scripts": {
     "generate": "ts-node --transpile-only ./tools/generate_graphql_schema",
+    "console": "TS_NODE_TRANSPILE_ONLY=true TZ=Etc/UTC rinore",
     "test:type": "tsc --noEmit",
     "test:lint": "tslint -p .",
     "test:unit": "NODE_ENV=test TZ=Etc/UTC mocha --require ts-node/register/transpile-only --exit ./test/*.ts",
@@ -31,9 +32,11 @@
     "@types/sinon": "^7.0.13",
     "@types/supertest": "^2.0.8",
     "chai": "^4.2.0",
+    "coffeescript": "^2.4.1",
     "mocha": "^6.1.4",
     "mocha-multi-reporters": "^1.1.7",
     "nyc": "^14.1.1",
+    "rinore": "^0.4.3",
     "sinon": "^7.3.2",
     "supertest": "^4.0.2",
     "ts-node": "^8.3.0",
@@ -55,5 +58,15 @@
     ],
     "report-dir": "./_coverage",
     "temp-directory": "./_coverage"
+  },
+  "rinore": {
+    "historyFile": ".sample-us",
+    "language": "coffeescript",
+    "prompt": "g[us]> ",
+    "require": [
+      "app/models:*",
+      "app/graphql",
+      "tools/rinore_settings"
+    ]
   }
 }
