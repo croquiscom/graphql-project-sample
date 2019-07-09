@@ -1,2 +1,4 @@
 node_modules
 _server_test_logs.txt
+_coverage
+xunit.xml
