@@ -1,3 +1,14 @@
+"""Input for createUser"""
+input CreateUserInput {
+  """user's full name"""
+  full_name: String!
+}
+
+type Mutation {
+  """Create a user"""
+  createUser(input: CreateUserInput!): User!
+}
+
 type Query {
   """
   Gets a user that matches all given conditions.
