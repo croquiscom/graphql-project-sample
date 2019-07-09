@@ -49,4 +49,7 @@ type User {
 type UserList {
   """user list"""
   item_list: [User!]!
+
+  """count of records that match given conditions"""
+  total_count: Int!
 }
