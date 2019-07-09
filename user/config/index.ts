@@ -1,32 +1,19 @@
-import path from 'path';
+import _ from 'lodash';
+import BaseConfig from './default';
 
-export const Config = {
-  project: 'user',
-  project_root: path.resolve(__dirname, '..'),
-  port: 6400,
+const Config = _.cloneDeep(BaseConfig);
 
-  log4js_config: {
-    appenders: {
-      console: { type: 'console' },
-      basic_console: { type: 'console', layout: { type: 'basic' } },
-    },
-    categories: {
-      default: {
-        appenders: ['console'], level: 'info',
-      },
-    },
-    disableClustering: true,
-  },
+if (process.env.NODE_ENV) {
+  try {
+    const EnvConfig = require(`./${process.env.NODE_ENV}`).default;
+    if (Array.isArray(EnvConfig)) {
+      _.merge(Config, ...EnvConfig);
+    } else {
+      _.merge(Config, EnvConfig);
+    }
+  } catch (e) {
+    console.log(`Cannot find configs for env=${process.env.NODE_ENV}`);
+  }
+}
 
-  database_user: {
-    host: 'localhost',
-    port: 6300,
-    database: 'user',
-    user: 'dbuser',
-    charset: 'utf8mb4',
-    collation: 'utf8mb4_unicode_ci',
-    pool_size: 3,
-    is_default: false,
-    query_timeout: 10000,
-  },
-};
+export { Config };
