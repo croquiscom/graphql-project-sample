@@ -1,5 +1,8 @@
 {
   "name": "user",
+  "scripts": {
+    "generate": "ts-node --transpile-only ./tools/generate_graphql_schema"
+  },
   "dependencies": {
     "@croquiscom/crary-express": "^0.1.3",
     "@croquiscom/crary-graphql": "^0.2.1",

@@ -1,6 +1,6 @@
 import { Request } from '@croquiscom/crary-express';
 import { ApolloServer } from 'apollo-server-express';
-import { DocumentNode, ExecutionArgs, Kind } from 'graphql';
+import { DocumentNode, ExecutionArgs, Kind, printSchema } from 'graphql';
 import { GraphQLExtension, GraphQLResponse } from 'graphql-extensions';
 import { buildSchemaSync } from 'type-graphql';
 import { resolvers } from '../resolvers';
@@ -90,3 +90,7 @@ class CustomApolloServer extends ApolloServer {
 }
 
 export const apollo_server = new CustomApolloServer();
+
+export function getSchemaString() {
+  return printSchema(schema).replace(/.*_placeholder: Boolean\n/g, '');
+}

@@ -1,0 +1,20 @@
+type Query {
+  """
+  Gets a user that matches all given conditions.
+  If there is no such user, returns null.
+  If there is no condition, returns null.
+  """
+  user(
+    """A user that has the given primary key"""
+    id: ID
+  ): User
+}
+
+"""User"""
+type User {
+  """Primary key"""
+  id: ID!
+
+  """user's full name"""
+  full_name: String!
+}
