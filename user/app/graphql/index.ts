@@ -1,14 +1,14 @@
 import { Request } from '@croquiscom/crary-express';
 import { ApolloServer } from 'apollo-server-express';
-import { buildSchema, DocumentNode, ExecutionArgs, Kind } from 'graphql';
+import { DocumentNode, ExecutionArgs, Kind } from 'graphql';
 import { GraphQLExtension, GraphQLResponse } from 'graphql-extensions';
-import '../models';
+import { buildSchemaSync } from 'type-graphql';
+import { resolvers } from '../resolvers';
 
-const schema = buildSchema(`
-type Query {
-  hello: String!
-}
-`);
+const schema = buildSchemaSync({
+  resolvers,
+  validate: false,
+});
 
 function getOperationName(document: DocumentNode): string | null {
   if (!document) {

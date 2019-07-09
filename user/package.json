@@ -2,12 +2,15 @@
   "name": "user",
   "dependencies": {
     "@croquiscom/crary-express": "^0.1.3",
+    "@croquiscom/crary-graphql": "^0.2.1",
     "apollo-server-express": "^2.6.7",
     "cormo": "^0.12.1",
     "deasync": "^0.1.15",
     "graphql": "^14.4.2",
     "graphql-extensions": "^0.7.6",
-    "mysql": "^2.17.1"
+    "mysql": "^2.17.1",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "https://github.com/croquiscom/type-graphql/releases/download/v0.17.4-cr1/type-graphql-0.17.4-cr1.tgz"
   },
   "devDependencies": {
     "@types/graphql": "^14.2.2",

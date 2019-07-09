@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import * as cormo from 'cormo';
 import deasync from 'deasync';
 
