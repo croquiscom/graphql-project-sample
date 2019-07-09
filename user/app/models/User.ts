@@ -21,4 +21,10 @@ export class User extends cormo.BaseModel {
   }
 }
 
+@ObjectType({ description: 'User list and summary' })
+export class UserList {
+  @Field(() => [User], { description: 'user list' })
+  item_list: User[];
+}
+
 type UserColumn = keyof cormo.ModelValueObjectWithId<User>;

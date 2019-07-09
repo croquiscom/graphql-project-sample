@@ -19,6 +19,18 @@ type Query {
     """A user that has the given primary key"""
     id: ID
   ): User
+
+  """
+  Gets user list that match all given conditions.
+  If there is no condition, returns all.
+  """
+  user_list(
+    """limit list count (default: 10, max: 50)"""
+    limit_count: Int
+
+    """skip records"""
+    skip_count: Int
+  ): UserList!
 }
 
 """User"""
@@ -28,4 +40,10 @@ type User {
 
   """user's full name"""
   full_name: String!
+}
+
+"""User list and summary"""
+type UserList {
+  """user list"""
+  item_list: [User!]!
 }

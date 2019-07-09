@@ -1,7 +1,9 @@
 import { GraphQLResolveInfo } from 'graphql';
 import { Args, Info, Query, Resolver } from 'type-graphql';
-import { User } from '../../models';
-import { UserQueryArgs } from './types';
+import { User, UserList } from '../../models';
+import { UserListQueryArgs, UserQueryArgs } from './types';
+
+export * from './UserList';
 
 @Resolver(() => User)
 export class UserQueryResolver {
@@ -21,5 +23,13 @@ If there is no condition, returns null.`,
       query.where({ id: args.id });
     }
     return await query.select(columns);
+  }
+
+  @Query(() => UserList, {
+    description: `Gets user list that match all given conditions.
+If there is no condition, returns all.`,
+  })
+  async user_list(@Args() args: UserListQueryArgs) {
+    return { __args: args };
   }
 }
