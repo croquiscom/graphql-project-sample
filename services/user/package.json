@@ -1,0 +1,72 @@
+{
+  "name": "user",
+  "scripts": {
+    "generate": "ts-node --transpile-only ./tools/generate_graphql_schema",
+    "console": "TS_NODE_TRANSPILE_ONLY=true TZ=Etc/UTC rinore",
+    "start:debug": "node --inspect-brk=36400 tools/server.js",
+    "test:type": "tsc --noEmit",
+    "test:lint": "tslint -p .",
+    "test:unit": "NODE_ENV=test TZ=Etc/UTC mocha --require ts-node/register/transpile-only --exit ./test/*.ts",
+    "test": "npm run test:type && npm run test:lint && npm run test:unit --",
+    "test:cov": "nyc npm run test --",
+    "test:report": "npm run test:cov -- --reporter mocha-multi-reporters",
+    "test:debug": "npm run test:unit -- --inspect-brk=30000"
+  },
+  "dependencies": {
+    "@croquiscom/crary-express": "^0.1.3",
+    "@croquiscom/crary-graphql": "^0.2.1",
+    "apollo-server-express": "^2.6.7",
+    "cormo": "^0.12.1",
+    "deasync": "^0.1.15",
+    "graphql": "^14.4.2",
+    "graphql-extensions": "^0.7.6",
+    "lodash": "^4.17.11",
+    "mysql": "^2.17.1",
+    "reflect-metadata": "^0.1.13",
+    "type-graphql": "https://github.com/croquiscom/type-graphql/releases/download/v0.17.4-cr1/type-graphql-0.17.4-cr1.tgz"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/graphql": "^14.2.2",
+    "@types/lodash": "^4.14.136",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.14.12",
+    "@types/sinon": "^7.0.13",
+    "@types/supertest": "^2.0.8",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "mocha-multi-reporters": "^1.1.7",
+    "nyc": "^14.1.1",
+    "rinore": "^0.4.3",
+    "sinon": "^7.3.2",
+    "supertest": "^4.0.2",
+    "ts-node": "^8.3.0",
+    "tslint": "^5.18.0",
+    "typescript": "^3.5.2"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "exclude": [
+      "config",
+      "test"
+    ],
+    "reporter": [
+      "cobertura",
+      "lcov",
+      "text-summary"
+    ],
+    "report-dir": "./_coverage",
+    "temp-directory": "./_coverage"
+  },
+  "rinore": {
+    "historyFile": ".sample-us",
+    "prompt": "g[us]> ",
+    "require": [
+      "app/models:*",
+      "app/graphql",
+      "tools/rinore_settings"
+    ]
+  }
+}

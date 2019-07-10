@@ -1,0 +1,55 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended"
+  ],
+  "jsRules": {},
+  "rules": {
+    "interface-name": {
+      "options": [
+        "never-prefix"
+      ]
+    },
+    "max-classes-per-file": {
+      "options": [
+        10
+      ]
+    },
+    "max-line-length": {
+      "options": [
+        400
+      ]
+    },
+    "member-access": false,
+    "member-ordering": false,
+    "no-console": false,
+    "no-empty-interface": false,
+    "no-reference": false,
+    "no-var-requires": false,
+    "quotemark": {
+      "options": [
+        "single",
+        "jsx-single",
+        "avoid-escape"
+      ]
+    },
+    "variable-name": {
+      "options": [
+        "ban-keywords",
+        "check-format",
+        "allow-pascal-case",
+        "allow-snake-case"
+      ]
+    },
+    "trailing-comma": {
+      "options": {
+        "esSpecCompliant": true,
+        "multiline": "always",
+        "singleline": "never"
+      }
+    },
+    "object-literal-sort-keys": false,
+    "semicolon": [true, "always", "ignore-bound-class-methods"]
+  },
+  "rulesDirectory": []
+}

@@ -1,0 +1,30 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch - user",
+      "cwd": "${workspaceRoot}/services/user",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "start:debug"
+      ],
+      "port": 36400,
+      "restart": true
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Test - user",
+      "cwd": "${workspaceRoot}/services/user",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run-script",
+        "test:debug"
+      ],
+      "port": 30000
+    }
+  ]
+}
