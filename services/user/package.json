@@ -3,7 +3,7 @@
   "scripts": {
     "generate": "ts-node --transpile-only ./tools/generate_graphql_schema",
     "console": "TS_NODE_TRANSPILE_ONLY=true TZ=Etc/UTC rinore",
-    "start:debug": "node --inspect-brk=36400 tools/app.js",
+    "start:debug": "node --inspect-brk=36400 tools/server.js",
     "test:type": "tsc --noEmit",
     "test:lint": "tslint -p .",
     "test:unit": "NODE_ENV=test TZ=Etc/UTC mocha --require ts-node/register/transpile-only --exit ./test/*.ts",
