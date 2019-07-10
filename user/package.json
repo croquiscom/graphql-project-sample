@@ -3,12 +3,14 @@
   "scripts": {
     "generate": "ts-node --transpile-only ./tools/generate_graphql_schema",
     "console": "TS_NODE_TRANSPILE_ONLY=true TZ=Etc/UTC rinore",
+    "start:debug": "node --inspect-brk=36400 tools/app.js",
     "test:type": "tsc --noEmit",
     "test:lint": "tslint -p .",
     "test:unit": "NODE_ENV=test TZ=Etc/UTC mocha --require ts-node/register/transpile-only --exit ./test/*.ts",
     "test": "npm run test:type && npm run test:lint && npm run test:unit --",
     "test:cov": "nyc npm run test --",
-    "test:report": "npm run test:cov -- --reporter mocha-multi-reporters"
+    "test:report": "npm run test:cov -- --reporter mocha-multi-reporters",
+    "test:debug": "npm run test:unit -- --inspect-brk=30000"
   },
   "dependencies": {
     "@croquiscom/crary-express": "^0.1.3",
