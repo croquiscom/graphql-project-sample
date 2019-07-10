@@ -3,5 +3,5 @@ import { getSchemaString } from '../app/graphql';
 import { Config } from '../config';
 
 const project = Config.project;
-fs.writeFileSync(`../interfaces/${project}.graphql`, getSchemaString());
+fs.writeFileSync(`../../interfaces/${project}.graphql`, getSchemaString());
 process.exit(0);

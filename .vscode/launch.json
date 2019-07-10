@@ -5,7 +5,7 @@
       "type": "node",
       "request": "launch",
       "name": "Launch - user",
-      "cwd": "${workspaceRoot}/user",
+      "cwd": "${workspaceRoot}/services/user",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "run-script",
@@ -18,7 +18,7 @@
       "type": "node",
       "request": "launch",
       "name": "Test - user",
-      "cwd": "${workspaceRoot}/user",
+      "cwd": "${workspaceRoot}/services/user",
       "runtimeExecutable": "npm",
       "runtimeArgs": [
         "run-script",
