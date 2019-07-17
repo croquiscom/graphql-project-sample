@@ -1,0 +1,32 @@
+GraphQL project sample for croquis.com projects
+
+# How to start
+1. Start database servers: `./tools/db/start.sh`
+2. Start services: `cd services/user && pm2 start tools/server.js`
+3. Run playground: http://localhost:6400/graphql
+
+# Sample queries
+
+## Create a user
+```graphql
+mutation {
+  createUser(input: {
+    full_name: "Test User"
+  }) {
+    id
+    full_name
+  }
+}
+```
+
+## Get users list
+```graphql
+{
+  user_list(full_name_istartswith: "T") {
+    item_list {
+      id
+      full_name
+    }
+  }
+}
+```
