@@ -5,6 +5,16 @@ GraphQL project sample for croquis.com projects
 2. Start services: `cd services/user && pm2 start tools/server.js`
 3. Run playground: http://localhost:6400/graphql
 
+# Used frameworks/libraries
+* [TypeScript](https://www.typescriptlang.org/)
+* [Apollo Server](https://www.apollographql.com/docs/apollo-server/)
+* [CORMO](http://croquiscom.github.io/cormo/)
+* [TypeGraphQL](https://typegraphql.ml/)
+* [Mocha](https://mochajs.org/)
+* [Chai](https://www.chaijs.com/)
+* [Sinon](https://sinonjs.org/)
+* [Rinore](https://github.com/croquiscom/rinore)
+
 # Sample queries
 
 ## Create a user
