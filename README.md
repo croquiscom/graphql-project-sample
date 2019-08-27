@@ -1,9 +1,15 @@
 GraphQL project sample for croquis.com projects
 
+# Need for Start
+1. docker
+2. docker-compose
+3. npm or yarn
+
 # How to start
 1. Start database servers: `./tools/db/start.sh`
-2. Start services: `cd services/user && pm2 start tools/server.js`
-3. Run playground: http://localhost:6400/graphql
+2. install [PM2](https://github.com/Unitech/pm2) : `npm install -g pm2 OR yarn global add pm2`
+3. Start services: `cd services/user && pm2 start tools/server.js`
+4. Run playground: http://localhost:6400/graphql
 
 # Used frameworks/libraries
 * [TypeScript](https://www.typescriptlang.org/)
