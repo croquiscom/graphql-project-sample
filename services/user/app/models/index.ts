@@ -1,7 +1,8 @@
 import 'reflect-metadata';
 
 import * as cormo from 'cormo';
-import deasync from 'deasync';
+
+const is_in_console = process.env.IN_CONSOLE === 'true';
 
 cormo.BaseModel.lean_query = true;
 
@@ -10,19 +11,23 @@ export { connection_user };
 
 export * from './User';
 
-try {
-  deasync(async (callback: (error?: Error) => void) => {
+export async function checkSchemas() {
+  if (await connection_user.isApplyingSchemasNecessary()) {
+    throw new Error(`need to migrate: run 'npm run migrate'`);
+  }
+}
+
+export async function applySchemas(verbose = false) {
+  await connection_user.applySchemas({ verbose: is_in_console || verbose });
+}
+
+if (is_in_console) {
+  (async () => {
     try {
-      await connection_user.applySchemas({});
-      callback();
+      await checkSchemas();
     } catch (error) {
-      callback(error);
+      console.log('\n' + error.message);
+      process.exit(1);
     }
   })();
-} catch (error) {
-  console.log(error);
-  while (error.cause) {
-    error = error.cause;
-  }
-  throw error;
 }

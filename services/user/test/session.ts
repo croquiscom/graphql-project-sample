@@ -3,7 +3,7 @@ import supertest from 'supertest';
 import { app } from '../app/app';
 
 class Session {
-  private agent: supertest.SuperTest<supertest.Request>;
+  private agent: supertest.SuperTest<supertest.Test>;
 
   constructor() {
     this.agent = supertest.agent(app);

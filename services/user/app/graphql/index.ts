@@ -1,9 +1,10 @@
 import { Request } from '@croquiscom/crary-express';
 import { ApolloServer } from 'apollo-server-express';
-import { DocumentNode, ExecutionArgs, graphql, Kind, printSchema } from 'graphql';
+import { DocumentNode, ExecutionArgs, Kind, printSchema } from 'graphql';
 import { GraphQLExtension, GraphQLResponse } from 'graphql-extensions';
 import { buildSchemaSync } from 'type-graphql';
 import { resolvers } from '../resolvers';
+import { Context } from '../types';
 
 const schema = buildSchemaSync({
   resolvers,
@@ -31,7 +32,7 @@ function getOperationName(document: DocumentNode): string | null {
 }
 
 type Diff<T, U> = T extends U ? never : T;
-interface Context {
+interface ContextApollo extends Context {
   body: Request['body'];
   req: Request;
   res: Diff<Request['res'], undefined>;
@@ -39,7 +40,7 @@ interface Context {
 
 class LogHelperExtension implements GraphQLExtension {
   executionDidStart({ executionArgs }: { executionArgs: ExecutionArgs }) {
-    const context: Context = executionArgs.contextValue;
+    const context: ContextApollo = executionArgs.contextValue;
     const operation_name = executionArgs.operationName || getOperationName(executionArgs.document);
 
     context.body.operationName = operation_name;
@@ -62,7 +63,7 @@ class LogHelperExtension implements GraphQLExtension {
     }
   }
 
-  willSendResponse({ graphqlResponse, context }: { graphqlResponse: GraphQLResponse, context: Context }) {
+  willSendResponse({ graphqlResponse, context }: { graphqlResponse: GraphQLResponse, context: ContextApollo }) {
     if (graphqlResponse.http) {
       // add charset
       graphqlResponse.http.headers.set('Content-Type', 'application/json; charset=utf-8');
@@ -79,8 +80,11 @@ class CustomApolloServer extends ApolloServer {
   constructor() {
     super({
       schema,
-      context: ({ req }): Context => {
-        return { body: req.body, req, res: req.res! };
+      context: ({ req }): ContextApollo => {
+        return {
+          body: req.body, req, res: req.res!,
+          loader: {},
+        };
       },
       extensions: [
         () => new LogHelperExtension(),
@@ -93,9 +97,4 @@ export const apollo_server = new CustomApolloServer();
 
 export function getSchemaString() {
   return printSchema(schema).replace(/.*_placeholder: Boolean\n/g, '');
-}
-
-export async function execute(request: string, variables?: { [key: string]: any }) {
-  const result = await graphql(schema, request, null, {}, variables);
-  return result;
 }
