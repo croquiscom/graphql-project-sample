@@ -2,8 +2,8 @@
   "name": "user",
   "scripts": {
     "generate": "ts-node --transpile-only ./tools/generate_graphql_schema",
+    "migrate": "node ./tools/migrate",
     "console": "TS_NODE_TRANSPILE_ONLY=true IN_CONSOLE=true TZ=Etc/UTC rinore",
-    "migrate": "ts-node --transpile-only ./tools/migrate",
     "start:debug": "node --inspect-brk=36400 tools/server.js",
     "test:type": "tsc --noEmit",
     "test:lint": "tslint -p .",
