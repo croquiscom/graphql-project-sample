@@ -1,3 +1,5 @@
+import 'reflect-metadata';
+
 import { Request } from '@croquiscom/crary-express';
 import { ApolloServer } from 'apollo-server-express';
 import { DocumentNode, ExecutionArgs, Kind, printSchema } from 'graphql';

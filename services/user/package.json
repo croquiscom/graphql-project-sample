@@ -63,6 +63,7 @@
   },
   "rinore": {
     "historyFile": ".sample-us",
+    "language": "javascript",
     "prompt": "g[us]> ",
     "require": [
       "app/models:*",
