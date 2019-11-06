@@ -12,6 +12,7 @@ const Config: BaseConfigType = {
   database_user: {
     database: 'test_user',
     pool_size: 3,
+    logger: 'empty',
   },
 };
 

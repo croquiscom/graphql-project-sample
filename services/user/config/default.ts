@@ -29,6 +29,7 @@ const Config = {
     pool_size: 3,
     is_default: false,
     query_timeout: 10000,
+    logger: 'color-console' as 'color-console' | 'empty',
   },
 };
 

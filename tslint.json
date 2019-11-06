@@ -48,8 +48,7 @@
         "singleline": "never"
       }
     },
-    "object-literal-sort-keys": false,
-    "semicolon": [true, "always", "ignore-bound-class-methods"]
+    "object-literal-sort-keys": false
   },
   "rulesDirectory": []
 }

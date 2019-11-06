@@ -3,7 +3,7 @@ import { Config } from '../config';
 import { app } from './app';
 import { checkSchemas } from './models';
 
-const { project } = Config;
+const service_name = Config.project;
 
 async function startServer() {
   const server = http.createServer(app);
@@ -11,7 +11,7 @@ async function startServer() {
   const port = Config.port;
   server.listen(port, () => {
     const worker_num = process.env.NODE_APP_INSTANCE || 0;
-    console.log(`[${new Date().toISOString()}] [${project}.services #${worker_num}] Started at http://localhost:${port}/graphql`);
+    console.log(`[${new Date().toISOString()}] [${service_name}.services #${worker_num}] Started at http://localhost:${port}/graphql`);
   });
 }
 
