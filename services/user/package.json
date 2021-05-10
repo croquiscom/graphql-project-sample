@@ -21,7 +21,7 @@
     "dataloader": "^1.4.0",
     "graphql": "^14.5.8",
     "graphql-extensions": "^0.10.4",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.21",
     "mysql": "^2.17.1",
     "reflect-metadata": "^0.1.13",
     "type-graphql": "https://github.com/croquiscom/type-graphql/releases/download/v0.17.4-cr1/type-graphql-0.17.4-cr1.tgz"
